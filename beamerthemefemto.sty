@@ -1,0 +1,148 @@
+\mode<presentation>
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{helvet}
+\usetikzlibrary{fit,positioning,calc,patterns.meta}
+
+
+\usecolortheme{femto}
+\usefonttheme{femto}
+
+\setbeamertemplate{title page}
+{
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[fit=(current page),fill=\@femtomaincolor] {};
+		\node[anchor=north west,inner sep=3mm] at (current page.north west)
+			{\includegraphics[width=3cm]{img/Femto-logo_blanc-2012-transp.pdf}};
+		\node[anchor=south west,inner sep=3mm] (CNRS) at (current page.south
+			west)
+			{\includegraphics[height=1cm]{img/CNRS_white.pdf}};
+		\node[inner sep=0, right=0 of CNRS] (UBFC)
+			{\includegraphics[height=1cm]{img/UBFC_white.pdf}};
+		\node[inner sep=0, right=3mm of UBFC] (UFC)
+			{\includegraphics[height=.5cm]{img/UFC_white.pdf}};
+		\node[inner sep=0, right=3mm of UFC] (ENSMM)
+			{\includegraphics[height=1cm]{img/ENSMM.pdf}};
+		\node[inner sep=0, right=3mm of ENSMM] (UTBM)
+			{\includegraphics[height=1cm]{img/UTBM.eps}};
+
+		% orange arc 
+		\node[anchor=center, inner sep=0] at ($(current page.south west) + (0,
+			2.5cm)$) {
+				\begin{tikzpicture}
+					\path[fill=femtoredstrong, even odd rule] (0, 0) circle[radius=10px]
+						(0, 0) circle[radius=20px];
+				\end{tikzpicture}
+			};
+
+		% yellow arc 
+		\node[anchor=center, inner sep=0] at ($(current page.north east) + (0,
+			-3cm)$) {
+				\begin{tikzpicture}
+					\path[fill=femtoyellowstrong, even odd rule] (0, 0) circle[radius=10px]
+						(0, 0) circle[radius=20px];
+				\end{tikzpicture}
+			};
+		% white dot arc
+		\node[anchor=center, inner sep=0] at ($(current page.north west) + (6cm, 0)$) {
+				\begin{tikzpicture}
+					\path[pattern color=white, pattern={Dots[distance=2px]}, even odd rule] (0, 0) circle[radius=10px]
+						(0, 0) circle[radius=20px];
+				\end{tikzpicture}
+			};
+
+		% white cross
+		\node[anchor=center, inner sep=0] at ($(current page.center) + (3cm,
+			-1.5cm)$) {
+				% white cross arc 
+				\begin{tikzpicture}
+					\path[fill=white] (0, 0) rectangle (30px, 10px);
+					\path[fill=white] (10px, 20px) rectangle (20px, -10px);
+				\end{tikzpicture}
+			};
+		
+		% purple angle
+		\node[anchor=center, inner sep=0] at ($(current page.north west) + (3.7cm,
+			-1.9cm)$) {
+				% white cross arc 
+				\begin{tikzpicture}
+					\path[fill=femtopurplestrong] (0, 0) rectangle (-20px, 10px);
+					\path[fill=femtopurplestrong] (0, 0) rectangle (-10px, 20px);
+				\end{tikzpicture}
+			};
+	\end{tikzpicture}
+
+	{\huge \textbf{\inserttitle}}\\
+	{\Large \insertsubtitle}
+
+	\hspace{-8mm}\tikz{\draw[color=\@femtolightcolor] (0, 0) -- (8mm, 0);}
+
+	{\normalsize \textit{\insertauthor}}
+}
+
+\setbeamertemplate{footline}
+{
+
+	\newcommand{\separationwidth}{\paperwidth}
+	\advance \separationwidth by -7mm
+	\hspace{4mm}
+	\begin{beamercolorbox}[wd=\separationwidth,ht=.5pt]{top separation line
+		foot}
+	\end{beamercolorbox}
+
+	\hbox{
+		\begin{beamercolorbox}[wd=.2\paperwidth,ht=8mm,sep=2mm]{background}
+			\includegraphics[height=5mm]{img/Femto-logo_gris-2012.pdf}
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.8\paperwidth,ht=8mm]{background}
+			\parbox[b][8mm][c]{.8\paperwidth}{
+				\usebeamerfont{footline}
+				%\hfill \insertshorttitle $\ |$ \insertshortauthor $\ |$ \insertshortdate
+				\usebeamerfont{page number in head/foot}
+				\hspace{90mm}
+				\insertframenumber/\inserttotalframenumber
+			}
+		\end{beamercolorbox}
+	}
+}
+
+% Removes navigation
+\setbeamertemplate{navigation symbols}
+{
+}
+
+\setbeamertemplate{background}
+{
+	% Bottom left angle
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=south west] at ($(current page.south west) + (1mm, 9mm)$) {
+				\begin{tikzpicture}
+					\path[fill=\@femtomaincolor] (0, 0) -- (16px, 0) -- (16px,
+					8px) -- (8px, 8px)--(8px, 16px) -- (0, 16px);
+				\end{tikzpicture}
+			};
+	\end{tikzpicture}
+
+	% Mirrored F symbol
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north east, inner sep=0] at ($(current page.north east) + (-3mm, -3mm)$) {
+			\begin{tikzpicture}[]
+				\path[fill=\@femtolightcolor] (0, 0) -- (12px, 0) -- (12px,
+					20px)
+					-- (24px, 20px) -- (24px, 32px) -- (12px, 32px) -- (12px,
+					44px)
+					--(12px, 44px) arc[start angle=0, end angle=90,
+					radius=28px] (-16px, 72px)
+					-- (-16px, 72px) -- (-36px, 72px) -- (-36px, 60px) --
+					(-16px, 60px)
+					-- (-16px, 60px) arc[start angle=90, end angle=0,
+					radius=16px]
+					-- (0px, 44px) -- (0px, 32px) -- (-12px, 32px) --
+					(-12px, 20px) -- (0px, 20px) -- (0px, 0px);
+				\path[fill=\@femtolightcolor] (12px, 60px) rectangle (24px, 72px);
+			\end{tikzpicture}
+			};
+	\end{tikzpicture}
+}
+
