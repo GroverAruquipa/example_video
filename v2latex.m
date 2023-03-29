@@ -1,5 +1,5 @@
 function v2latex(name_video,Folder_name,Frame_name,N_F,RES,im_focus)
-% Modified and created by Grover
+
 %   RES = resolution of picture: RES > 0   (recomended RES > 100)
 %   N_F = Desired number of frames
 %
